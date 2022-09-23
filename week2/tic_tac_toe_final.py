@@ -3,6 +3,7 @@
 
 
 def main():
+    # create the dictionary with the numbers of the board
     dict_1 = {
         1: "1",
         2: "2",
