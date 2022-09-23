@@ -1,0 +1,26 @@
+# list_1 = ["x", "2", "x", "x", "5", "x", "x", "8", "9"]
+# list_1 = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+dict_1 = {
+    1: "1",
+    2: "2",
+    3: "3",
+    4: "4",
+    5: "5",
+    6: "6",
+    7: "7",
+    8: "8",
+    9: "9"
+}
+
+for key, value in dict_1.items():
+    if key == 3 or key == 6:
+        print(value, end="  |  ")
+        print("")
+        print("----------------")
+    else:
+        print(value, end="  |  ")
+
+user_1 = int(input("Choose a number: "))
+dict_1.update({user_1: "X"})
+
