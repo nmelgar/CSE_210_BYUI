@@ -8,3 +8,5 @@ class Account:
 
     def set_transactions(transactions):
         self._transactions = transactions
+        transaction = ()
+        #week 5
