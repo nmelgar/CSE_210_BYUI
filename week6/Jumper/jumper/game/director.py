@@ -1,4 +1,4 @@
-from game.card import Card
+from Jumper.jumper.game.puzzle import Card
 
 
 class Director:
