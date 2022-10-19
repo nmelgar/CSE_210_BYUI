@@ -9,22 +9,27 @@ for x in word:
     new_list.append("_")
 
 while run:
-    # imprimir la lista de los underscores
+    # imprimir la lista con puros underscores
     for under in new_list:
         print(under, end=" ")
 
-    letter = input("letter: ")
+    print("\n")
+    letter = input("\nletter: ")
 
-    if letter in word:
-        replace_value = word.index(letter)
-        new_list.pop(replace_value)
-        new_list.insert(replace_value, letter)
-    else:
-        print("\nhi")
+    for i in range(len(word)):
+        individual_letter = word[i]
+        if letter == individual_letter:
+            new_list.pop(i)
+            new_list.insert(i, letter)
 
-    exit = input("Do you want to exit? ")
-    if exit == "s":
+    print(new_list)
+    under = "_"
+    if under not in new_list:
         run = False
+    # # if letter in word:
+    # exit = input("Do you want to exit? ")
+    # if exit == "s":
+    #     run = False
 
 
 # def main():
