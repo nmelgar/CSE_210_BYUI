@@ -2,20 +2,22 @@ import random
 
 
 def main():
+    guessed = False
     words = list(list_of_words())
     number = random_number()
     word = words[number]
 
-    # strings are arrays so you can loop through them
-    print(word)
-    for x in word:
-        print("_", end=" ")
+    while guessed == False:
+        print_word(word)
+        print(" ")
+        letter = input("\nTry a letter: ")
+        word_comparison(word, letter)
 
 
 def list_of_words():
-    with open("/home/nmelgar/Projects/CSE_210_BYUI/cse210-01/week6/Jumper/jumper/game/words.txt", "r") as words:
-        # use this line when not working at my local machine
-        # with open("words.txt", "r") as words:
+    # with open("/home/nmelgar/Projects/CSE_210_BYUI/cse210-01/week6/Jumper/jumper/game/words.txt", "r") as words:
+    # use this line when not working at my local machine
+    with open("words.txt", "r") as words:
         list_of_words = []
 
         for line in words:
@@ -31,6 +33,24 @@ def random_number():
     number = random.randint(0, length)
 
     return number
+
+
+# check for optional arguments in this function
+def print_word(word, letter = "x"):
+    # strings are arrays so you can loop through them
+    print(word)
+    for x in word:
+        if letter in word:
+            print(x)
+        else:
+            print("_", end=" ")
+
+
+def word_comparison(letter, word):
+    if letter in word:
+        print("\nYes it is here")
+    else:
+        print("Letter is not here")
 
 
 if __name__ == "__main__":
