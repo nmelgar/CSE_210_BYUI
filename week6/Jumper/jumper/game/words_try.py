@@ -2,22 +2,19 @@ import random
 
 
 def main():
-    guessed = False
+    guessed = True
     words = list(list_of_words())
     number = random_number()
     word = words[number]
-
-    while guessed == False:
-        print_word(word, letter="x")
-        print(" ")
-        letter = input("\nTry a letter: ")
-        word_comparison(word, letter)
+    while guessed:
+        new_list = underscore_list(word)
+        print_word(word, new_list)
 
 
 def list_of_words():
-    with open("/home/nmelgar/Projects/CSE_210_BYUI/cse210-01/week6/Jumper/jumper/game/words.txt", "r") as words:
-        # use this line when not working at my local machine
-        # with open("words.txt", "r") as words:
+    # with open("/home/nmelgar/Projects/CSE_210_BYUI/cse210-01/week6/Jumper/jumper/game/words.txt", "r") as words:
+    # use this line when not working at my local machine
+    with open("words.txt", "r") as words:
         list_of_words = []
 
         for line in words:
@@ -35,22 +32,36 @@ def random_number():
     return number
 
 
-# check for optional arguments in this function
-def print_word(word, letter):
-    # strings are arrays so you can loop through them
-    print(word)
+def underscore_list(word):
+    new_list = []
+
     for x in word:
-        if letter in word:
-            print(x)
-        else:
-            print("_", end=" ")
+        new_list.append("_")
 
+    return new_list
 
-def word_comparison(word, letter="x"):
-    if letter in word:
-        print("\nYes it is here")
-    else:
-        print("Letter is not here")
+def print_word(word, new_list):
+    guessed = True
+
+    for under in new_list:
+        print(under, end=" ")
+
+    print("\n")
+    letter = input("\nletter: ")
+
+    for i in range(len(word)):
+        individual_letter = word[i]
+        if letter == individual_letter:
+            new_list.pop(i)
+            new_list.insert(i, letter)
+
+    under = "_"
+    if under not in new_list:
+        word_final = str(word)
+        print(f"\nYou guessed the word! {word_final}")
+        guessed = False
+        return guessed
+
 
 
 if __name__ == "__main__":
