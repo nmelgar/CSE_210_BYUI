@@ -36,7 +36,6 @@ class Director:
 
     def _game_interface(self):
         puzzle = Puzzle()
-        list_of_words = puzzle.list_of_words()
-        random_number = puzzle.random_number()
-        word = puzzle.generate_word(list_of_words, random_number)
+        word = puzzle.generate_word()
         print(word)
+        # hacer un loop aqui para hacer todo el words_try.py

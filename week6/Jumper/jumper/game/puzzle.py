@@ -39,7 +39,7 @@ class Puzzle:
 
         return number
 
-    def generate_word(self, list_of_words, random_number):
+    def generate_word(self):
         list_of_words = self.list_of_words()
         words = list(list_of_words)
         random_number = self.random_number()
