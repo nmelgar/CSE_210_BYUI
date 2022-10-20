@@ -1,4 +1,3 @@
-from Jumper.jumper.game.puzzle import Card
 
 
 class Director:
@@ -19,9 +18,6 @@ class Director:
             self (Director): an instance of Director.
 
         """
-        self.score = 300
-        self.guess_score = 100
-        self.failed_Score = 75
         self.run_game = True
 
     def start_game(self):
@@ -46,12 +42,7 @@ class Director:
                     self.run_game = False
 
     def game_interface(self):
-        """This method will show the interface and information of the game.
-        card_value: a integer value of randomly selected card.
-        guess: coming for higher_or_lower function.
-        next_card_value: a integer value of randomly selected card.
-        self.score: integer that will be added or subtracted.
-
+        """
         Args:
             self (Director): an instance of Director.
         """

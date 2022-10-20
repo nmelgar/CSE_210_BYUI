@@ -13,12 +13,6 @@ class Puzzle:
     def __init__(self):
         self.word = 0
 
-    def random_card(self):
-        """Args:
-            self (Card): An instance of Card.
-        """
-        value = self.individual_value = random.randint(1, 13)
-        return value
 
     def list_of_words(self):
         """This function will be to generate the list of word.
@@ -38,3 +32,4 @@ class Puzzle:
                 list_of_words.append(stripped_line)
 
             return list_of_words
+    

@@ -6,9 +6,7 @@ def main():
     words = list(list_of_words())
     number = random_number()
     word = words[number]
-    while guessed:
-        new_list = underscore_list(word)
-        print_word(word, new_list)
+    print_word(word)
 
 
 def list_of_words():
@@ -32,36 +30,32 @@ def random_number():
     return number
 
 
-def underscore_list(word):
+def print_word(word):
+    guessed = True
     new_list = []
 
     for x in word:
         new_list.append("_")
 
-    return new_list
+    while guessed:
+        for under in new_list:
+            print(under, end=" ")
 
-def print_word(word, new_list):
-    guessed = True
+        print("\n")
+        letter = input("\nletter: ")
 
-    for under in new_list:
-        print(under, end=" ")
+        for i in range(len(word)):
+            individual_letter = word[i]
+            if letter == individual_letter:
+                new_list.pop(i)
+                new_list.insert(i, letter)
 
-    print("\n")
-    letter = input("\nletter: ")
-
-    for i in range(len(word)):
-        individual_letter = word[i]
-        if letter == individual_letter:
-            new_list.pop(i)
-            new_list.insert(i, letter)
-
-    under = "_"
-    if under not in new_list:
-        word_final = str(word)
-        print(f"\nYou guessed the word! {word_final}")
-        guessed = False
-        return guessed
-
+        under = "_"
+        if under not in new_list:
+            word_final = str(word)
+            print(f"\nYou guessed the word! {word_final}")
+            guessed = False
+            return guessed
 
 
 if __name__ == "__main__":
