@@ -32,7 +32,7 @@ class Puzzle:
 
             return list_of_words
 
-    def random_number(self):
+    def _random_number(self):
         """This function will be to generate a random number.
         This number will be used when generating the random word.
 
@@ -45,7 +45,7 @@ class Puzzle:
 
         return number
 
-    def generate_word(self):
+    def _generate_word(self):
         """This function will be to generate a random word. 
         It will be working with the list_of_words() and random_number() functions,
         not as parameters.
@@ -55,7 +55,7 @@ class Puzzle:
         """
         list_of_words = self.list_of_words()
         words = list(list_of_words)
-        random_number = self.random_number()
+        random_number = self._random_number()
 
         word = words[random_number]
 

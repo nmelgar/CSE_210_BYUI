@@ -54,7 +54,7 @@ class Director:
         """
         puzzle = Puzzle()
         parachute = Parachute()
-        word = puzzle.generate_word()
+        word = puzzle._generate_word()
         player_points = self._player_points
 
         # create the list of underscores based on the puzzle
@@ -71,7 +71,7 @@ class Director:
             print(" ")
 
             # print the parachute
-            parachute.print_parachute(player_points)
+            parachute._print_parachute(player_points)
             if player_points == 0:
                 word_final = str(word)
                 print(f"\nThe word was {word_final}")
