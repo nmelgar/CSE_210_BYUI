@@ -11,7 +11,7 @@ class Puzzle:
     """
 
     def __init__(self):
-        self.word = 0
+        self.word = ""
 
     def list_of_words(self):
         """This function will be to generate the list of words.
@@ -22,6 +22,7 @@ class Puzzle:
         """
         # use this line when not working at my local machine
         # with open("words.txt", "r") as words:
+        # use this line when working at nefi's local machine
         with open("/home/nmelgar/Projects/CSE_210_BYUI/cse210-01/week6/Jumper/jumper/trying/words.txt", "r") as words:
             list_of_words = []
 
@@ -46,7 +47,7 @@ class Puzzle:
 
     def generate_word(self):
         """This function will be to generate a random word. 
-        It will be taking the list_of_words() and random_number() functions,
+        It will be working with the list_of_words() and random_number() functions,
         not as parameters.
 
         Args:
