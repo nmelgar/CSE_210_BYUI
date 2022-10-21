@@ -21,9 +21,9 @@ class Puzzle:
             self (word): An instance of puzzle
         """
         # use this line when not working at my local machine
-        # with open("words.txt", "r") as words:
+        with open("game/words.txt", "r") as words:
         # use this line when working at nefi's local machine
-        with open("/home/nmelgar/Projects/CSE_210_BYUI/cse210-01/week6/Jumper/jumper/trying/words.txt", "r") as words:
+        # with open("/home/nmelgar/Projects/CSE_210_BYUI/cse210-01/week6/Jumper/jumper/game/words.txt", "r") as words:
             list_of_words = []
 
             for line in words:
