@@ -1,5 +1,6 @@
 from game.terminal_service import TerminalService
 from game.puzzle import Puzzle
+from game.parachute import Parachute
 
 
 class Director:
@@ -17,8 +18,10 @@ class Director:
 
         """
         self._run_game = True
+        self._player_points = 4
         self._terminal_service = TerminalService()
         self._puzzle = Puzzle()
+        self.parachhute = Parachute()
 
     def start_game(self):
         """
@@ -36,6 +39,7 @@ class Director:
 
     def _game_interface(self):
         puzzle = Puzzle()
+        parachute = Parachute()
         word = puzzle.generate_word()
         print(word)
         new_list = []
@@ -46,8 +50,11 @@ class Director:
         while self._run_game:
             for under in new_list:
                 print(under, end=" ")
+            print(" ")
+            
+            parachute.print_parachute()
 
-            print("\n")
+            print(" ")
             letter = self._get_inputs()
 
             for i in range(len(word)):
@@ -59,6 +66,7 @@ class Director:
             under = "_"
             if under not in new_list:
                 word_final = str(word)
-                print(f"\nYou guessed the word! {word_final}")
+                print(f"\n{word_final}")
+                print(f"\nYou guessed the word!\nThanks for playing!")
                 self._run_game = False
                 return self._run_game
