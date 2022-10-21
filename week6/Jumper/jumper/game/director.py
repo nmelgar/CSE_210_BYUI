@@ -18,6 +18,7 @@ class Director:
         """
         self._run_game = True
         self._terminal_service = TerminalService()
+        self._puzzle = Puzzle()
 
     def start_game(self):
         """
@@ -27,15 +28,37 @@ class Director:
         """
         print("\nLet's play!")
         print("")
-        while self._run_game:
-            self._game_interface()
-            self._get_inputs()
+        self._game_interface()
 
     def _get_inputs(self):
         letter = self._terminal_service.read_letter("\nLetter to guess: ")
+        return letter
 
     def _game_interface(self):
         puzzle = Puzzle()
         word = puzzle.generate_word()
         print(word)
-        # hacer un loop aqui para hacer todo el words_try.py
+        new_list = []
+
+        for x in word:
+            new_list.append("_")
+
+        while self._run_game:
+            for under in new_list:
+                print(under, end=" ")
+
+            print("\n")
+            letter = self._get_inputs()
+
+            for i in range(len(word)):
+                individual_letter = word[i]
+                if letter == individual_letter:
+                    new_list.pop(i)
+                    new_list.insert(i, letter)
+
+            under = "_"
+            if under not in new_list:
+                word_final = str(word)
+                print(f"\nYou guessed the word! {word_final}")
+                self._run_game = False
+                return self._run_game
