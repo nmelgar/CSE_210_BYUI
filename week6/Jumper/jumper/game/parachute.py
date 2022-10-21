@@ -7,7 +7,7 @@ class Parachute():
     """
 
     def parachute_1(self):
-        print("   ____   ")
+        print("\n   ____   ")
         print("  /____\  ")
         print("  \    / ")
         print("   \  / ")
@@ -18,7 +18,7 @@ class Parachute():
         print("\n^^^^^^^^^^")
 
     def parachute_2(self):
-        print("  /____\  ")
+        print("\n  /____\  ")
         print("  \    / ")
         print("   \  / ")
         print("   .O.  ")
@@ -28,7 +28,7 @@ class Parachute():
         print("\n^^^^^^^^^^")
 
     def parachute_3(self):
-        print("  \    / ")
+        print("\n  \    / ")
         print("   \  / ")
         print("   .O.  ")
         print("   /|\ ")
@@ -37,7 +37,7 @@ class Parachute():
         print("\n^^^^^^^^^^")
 
     def parachute_4(self):
-        print("   \  / ")
+        print("\n   \  / ")
         print("   .O.  ")
         print("   /|\ ")
         print("   / \ ")
@@ -45,15 +45,15 @@ class Parachute():
         print("\n^^^^^^^^^^")
 
     def parachute_5(self):
-        print("   .x.  ")
+        print("\n   .x.  ")
         print("   /|\ ")
         print("   / \ ")
 
         print("\n^^^^^^^^^^")
         print("You lost! :(")
+        return
 
-    def print_parachute(self):
-        player_points = 4
+    def print_parachute(self, player_points):
         if player_points == 4:
             self.parachute_1()
         elif player_points == 3:
