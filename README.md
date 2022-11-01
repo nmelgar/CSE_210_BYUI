@@ -1,21 +1,40 @@
 # CSE_210_BYUI
 <hr>
-This is a repository to organize and share the programs created while taking the course "CSE 210: Programming with classes". <br>
+<h3>Overview</h3>
+<hr>
+<p>This is a repository to organize and share the programs created while taking the course "CSE 210: Programming with classes". <br>
 Principles of object oriented programming will be applied through the projects. <br>
-All the code is created by me. Please do not copy the code to save time as a student, it is better to create it yourself.  <br>
+</p>
 
-The course has a 14-week structure, each week is teaching new concepts to apply and combine them with the previous' week concepts. </p>
+
+## Repository Structure
+---
+The project files and folders are organized as follows:
+```
+root                    (project root folder)
++-- Hilo
+    +-- hilo              (source code for game)
+        +-- game              (specific classes)
+        +-- __main__.py       (program entry point)
+
++-- Jumper
+    +-- jumper              (source code for game)
+        +-- game              (specific classes)
+        +-- __main__.py       (program entry point)
+
++-- Tic-Tac-Toe
+    +-- tic_tac_toe.py      (run the game from this file)
+
++-- Others              (folders with tests, tries, concepts and more)
+    +-- 
++-- README.md           (general info)
+```
+
+## Required Technologies
+---
+* At leastPython 3.8.0
 
 ## Author
 ---
 * Nefi Melgar (mel16013@byui.edu)
-
-## Projects
----
-<p>These are the projects and topics covered during the semester</p>
-<h3>Week 1</h3>
-<h3>Week 2</h3>
-<h3>Week 3</h3>
-<h3>Week 4</h3>
-<h3>Week 5</h3>
 
