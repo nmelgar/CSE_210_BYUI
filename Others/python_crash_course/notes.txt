@@ -1,0 +1,16 @@
+- A function that’s part of a class is a method. Everything you learned about
+functions applies to methods as well
+
+- Every method call associated with an instance automatically passes self, which is
+a reference to the instance itself; it gives the individual instance access to
+the attributes and methods in the class.
+
+- Any variable prefixed with self is available to every method in 
+the class, and we’ll also be able to access these variables through 
+any instance created from the class.
+
+- Think of a class as a set of instructions for how to make an instance.
+
+- To access the attributes of an instance, you use dot notation.
+
+
