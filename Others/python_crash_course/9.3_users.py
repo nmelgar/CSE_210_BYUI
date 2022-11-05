@@ -7,6 +7,7 @@ class User:
         self.last_name = last_name
         self.username = username
         self.password = password
+        self.login_attempts = 0
 
     def describe_user(self):
         print(
@@ -14,6 +15,13 @@ class User:
 
     def greet_user(self):
         print(f"Welcome to the platform {self.username}")
+
+    def increment_login_attempts(self):
+        self.login_attempts += 1
+
+    def reset_login_attempts(self):
+        self.login_attempts = 0
+
 
 user_1 = User("peter", "perez", "pperez56", "d8fkg9__00o")
 user_1.describe_user()
@@ -24,3 +32,14 @@ print()
 user_2 = User("john", "johnson", "jjohn33", "r89apasf**")
 user_2.describe_user()
 user_2.greet_user()
+
+user_3 = User("john", "johnson", "jjohn33", "r89apasf**")
+user_3.increment_login_attempts()
+user_3.increment_login_attempts()
+user_3.increment_login_attempts()
+user_3.increment_login_attempts()
+user_3.increment_login_attempts()
+print(f"Current login attempts: {user_3.login_attempts}")
+user_3.reset_login_attempts()
+print(f"Current login attempts: {user_3.login_attempts}")
+
