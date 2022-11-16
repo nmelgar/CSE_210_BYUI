@@ -22,7 +22,8 @@ class ControlActorsAction(Action):
         self._keyboard_service = keyboard_service
 
         #there should be 2 cyles below
-        self._direction = Point(constants.CELL_SIZE, 0)
+        self._cycle_one_direction = Point(constants.CELL_SIZE, 0)
+        self._cycle_two_direction = Point(constants.CELL_SIZE, 0)
 
     def execute(self, cast, script):
         """Executes the control actors action.
@@ -47,7 +48,7 @@ class ControlActorsAction(Action):
         if self._keyboard_service.is_key_down('s'):
             self._direction = Point(0, constants.CELL_SIZE)
         
-        snake = cast.get_first_actor("snakes")
-        snake.turn_head(self._direction)
+        cycle_one = cast.get_first_actor("cycle_one")
+        cycle_one.turn_cycle(self._cycle_one_direction)
 
         #repeat the process to create a second cycle here

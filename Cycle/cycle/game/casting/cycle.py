@@ -17,6 +17,7 @@ class Cycle(Actor):
     def __init__(self, position):
         super().__init__()
         self._segments = []
+        self._color = Color(255, 255, 255)
         self._prepare_cycle(position)
         self._name = ""
 
@@ -59,7 +60,7 @@ class Cycle(Actor):
     def turn_cycle(self, velocity):
         self._segments[0].set_velocity(velocity)
 
-    def _prepare_cycle(self):
+    def _prepare_cycle(self, position):
         # MODIFY THIS TO MAKE IT WORK CORRECTLY
         x = int(constants.MAX_X / 2)
         y = int(constants.MAX_Y / 2)
