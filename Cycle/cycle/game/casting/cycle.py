@@ -7,19 +7,26 @@ from game.shared.color import Color
 class Cycle(Actor):
     """
     A fast vehicle that leaves a trace behind.
-    
-    The responsibility of Cycle is to move itself.
+
+    The responsibility of Cycle is to move by itself.
 
     Attributes:
         ## add atributes below
     """
-    def __init__(self):
+
+    def __init__(self, position):
         super().__init__()
         self._segments = []
-        self._prepare_body()
+        self._prepare_cycle(position)
+        self._name = ""
 
     def get_segments(self):
         return self._segments
+
+    def get_players_name(self):
+        """Gets the players name"""
+
+        return self._name
 
     def move_next(self):
         # move all segments
@@ -32,7 +39,7 @@ class Cycle(Actor):
             velocity = previous.get_velocity()
             trailing.set_velocity(velocity)
 
-    def get_head(self):
+    def get_cycle(self):
         return self._segments[0]
 
     def grow_tail(self, number_of_segments):
@@ -41,7 +48,7 @@ class Cycle(Actor):
             velocity = tail.get_velocity()
             offset = velocity.reverse()
             position = tail.get_position().add(offset)
-            
+
             segment = Actor()
             segment.set_position(position)
             segment.set_velocity(velocity)
@@ -49,10 +56,11 @@ class Cycle(Actor):
             segment.set_color(constants.GREEN)
             self._segments.append(segment)
 
-    def turn_head(self, velocity):
+    def turn_cycle(self, velocity):
         self._segments[0].set_velocity(velocity)
-    
-    def _prepare_body(self):
+
+    def _prepare_cycle(self):
+        # MODIFY THIS TO MAKE IT WORK CORRECTLY
         x = int(constants.MAX_X / 2)
         y = int(constants.MAX_Y / 2)
 
@@ -61,10 +69,21 @@ class Cycle(Actor):
             velocity = Point(1 * constants.CELL_SIZE, 0)
             text = "8" if i == 0 else "#"
             color = constants.YELLOW if i == 0 else constants.GREEN
-            
+        # MODIFY until THIS TO MAKE IT WORK CORRECTLY
+
             segment = Actor()
             segment.set_position(position)
             segment.set_velocity(velocity)
             segment.set_text(text)
             segment.set_color(color)
             self._segments.append(segment)
+
+    def set_cycle_color(self, color):
+
+        self._color = color
+
+        # add code here to set color for segments
+
+    def set_name(self, name):
+
+        self._name = name

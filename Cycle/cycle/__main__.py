@@ -23,6 +23,9 @@ def main():
     
     # create the cast
     #create the cast below
+    # cast = Cast()
+    # cast.add_actor("cycle_1", cycle_one)
+    # cast.add_actor("cycle_1", cycle_two)
    
     # start the game
     keyboard_service = KeyboardService()
