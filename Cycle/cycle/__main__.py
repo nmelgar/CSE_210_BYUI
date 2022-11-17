@@ -33,6 +33,13 @@ def main():
     cast.add_actor("cycle_one", cycle_one)
     cast.add_actor("cycle_one", cycle_two)
 
+    score1 = Score()
+    score2 = Score()
+
+    # add: where will the scores be positioned?
+    score1.add_points(0)
+    score2.add_points(0)
+
     # start the game
     keyboard_service = KeyboardService()
     video_service = VideoService()
