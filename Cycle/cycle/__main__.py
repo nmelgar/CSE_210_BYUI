@@ -11,26 +11,24 @@ from game.scripting.draw_actors_action import DrawActorsAction
 from game.directing.director import Director
 from game.services.keyboard_service import KeyboardService
 from game.services.video_service import VideoService
-from game.shared.color import Color
 from game.shared.point import Point
 
 
 def main():
-    
-    #create the cycles, positions and color
-    #create the cycles below
-    cycle_one = Cycle(Point(int(constants.MAX_X - 600), int(constants.MAX_Y / 2)))
-    cycle_two = Cycle(Point(int(constants.MAX_X - 300), int(constants.MAX_Y / 2)))
+
+    # create two cycles, adds positions and colors
+    cycle_one = Cycle(
+        Point(int(constants.MAX_X - 500), int(constants.MAX_Y / 2)))
+    cycle_two = Cycle(
+        Point(int(constants.MAX_X - 200), int(constants.MAX_Y / 2)))
     cycle_one.set_cycle_color(constants.GREEN)
     cycle_two.set_cycle_color(constants.RED)
-    
-    
-    # create the cast
-    #create the cast below
+
+    # Create the cast
     cast = Cast()
     cast.add_actor("cycle_one", cycle_one)
     cast.add_actor("cycle_one", cycle_two)
-   
+
     # start the game
     keyboard_service = KeyboardService()
     video_service = VideoService()
@@ -40,7 +38,7 @@ def main():
     script.add_action("update", MoveActorsAction())
     script.add_action("update", HandleCollisionsAction())
     script.add_action("output", DrawActorsAction(video_service))
-    
+
     director = Director(video_service)
     director.start_game(cast, script)
 
