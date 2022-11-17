@@ -21,7 +21,6 @@ class Score(Actor):
         self._points = 0
         self._player_name = ""
 
-
     def add_points(self, points):
         """Adds the given points to the score's total points.
 
@@ -30,11 +29,6 @@ class Score(Actor):
         """
         self._points += points
         # modify following line to show usernme and points
-        self.set_text(f"{self._player_name} {self._points}")
-
-    def reduce_points(self):
-
-        self._points -= 1
         self.set_text(f"{self._player_name}: {self._points}")
 
     def set_player_name(self, name):
@@ -43,5 +37,6 @@ class Score(Actor):
         self.set_text(f"{self._player_name}: {self._points}")
 
     def get_player_points(self):
-
+        """Gets the points of the player
+        """
         return self._points
