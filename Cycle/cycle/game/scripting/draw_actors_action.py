@@ -26,15 +26,18 @@ class DrawActorsAction(Action):
             cast (Cast): The cast of Actors in the game.
             script (Script): The script of Actions in the game.
         """
-        #modify this to make 2 cycles (actors)
+        #add score for both, not just one
         score = cast.get_first_actor("scores")
 
-        snake = cast.get_first_actor("cycle")
-        segments = snake.get_segments()
+        cycle_one = cast.get_first_actor("cycle_one")
+        cycle_two = cast.get_first_actor("cycle_two")
+        segments_one = cycle_one.get_segments()
+        segments_two = cycle_two.get_segments()
         messages = cast.get_actors("messages")
 
         self._video_service.clear_buffer()
-        self._video_service.draw_actors(segments)
+        self._video_service.draw_actors(segments_one)
+        self._video_service.draw_actors(segments_two)
         self._video_service.draw_actor(score)
         self._video_service.draw_actors(messages, True)
         self._video_service.flush_buffer()

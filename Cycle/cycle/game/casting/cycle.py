@@ -44,6 +44,7 @@ class Cycle(Actor):
         return self._segments[0]
 
     def grow_tail(self, number_of_segments):
+        # modify this method for game over to change color?
         for i in range(number_of_segments):
             tail = self._segments[-1]
             velocity = tail.get_velocity()
@@ -62,8 +63,8 @@ class Cycle(Actor):
 
     def _prepare_cycle(self, position):
         # MODIFY THIS TO MAKE IT WORK CORRECTLY
-        x = int(constants.MAX_X / 2)
-        y = int(constants.MAX_Y / 2)
+        x = position.get_x()
+        y = position.get_y()
 
         for i in range(constants.CYCLE_LENGTH):
             position = Point(x - i * constants.CELL_SIZE, y)
@@ -76,7 +77,7 @@ class Cycle(Actor):
             segment.set_position(position)
             segment.set_velocity(velocity)
             segment.set_text(text)
-            segment.set_color(color)
+            segment.set_color(self._color)
             self._segments.append(segment)
 
     def set_cycle_color(self, color):
