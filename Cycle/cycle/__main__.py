@@ -31,7 +31,7 @@ def main():
     # Create the cast
     cast = Cast()
     cast.add_actor("cycle_one", cycle_one)
-    cast.add_actor("cycle_one", cycle_two)
+    cast.add_actor("cycle_two", cycle_two)
 
     score1 = Score()
     score2 = Score()
