@@ -43,7 +43,7 @@ class Cycle(Actor):
     def get_cycle(self):
         return self._segments[0]
 
-    def grow_tail(self, number_of_segments):
+    def walls(self, number_of_segments):
         # modify this method for game over to change color?
         for i in range(number_of_segments):
             tail = self._segments[-1]
@@ -67,10 +67,9 @@ class Cycle(Actor):
         y = position.get_y()
 
         for i in range(constants.CYCLE_LENGTH):
-            position = Point(x - i * constants.CELL_SIZE, y)
-            velocity = Point(1 * constants.CELL_SIZE, 0)
-            text = "8" if i == 0 else "#"
-            color = constants.YELLOW if i == 0 else constants.GREEN
+            position = Point(x, y + i * constants.CELL_SIZE)
+            velocity = Point(0, 1 * -constants.CELL_SIZE)
+            text = "O" if i == 0 else "#"
         # MODIFY until THIS TO MAKE IT WORK CORRECTLY
 
             segment = Actor()
@@ -84,7 +83,8 @@ class Cycle(Actor):
 
         self._color = color
 
-        # add code here to set color for segments
+        for segment in self._segments:
+            segment.set_color(self._color)
 
     def set_name(self, name):
 

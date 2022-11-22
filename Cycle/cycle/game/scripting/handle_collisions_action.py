@@ -26,20 +26,23 @@ class HandleCollisionsAction(Action):
             script (Script): The script of Actions in the game.
         """
         if not self._is_game_over:
-            
             self._handle_segment_collision(cast)
-            self._handle_game_over(cast)
+        self._handle_walls(cast)
+        self._handle_game_over(cast)
 
-    
+    def _handle_walls(self, cast):
+
+        cycle_one = cast.get_first_actor("cycle_one")
+        cycle_two = cast.get_first_actor("cycle_two")
+        cycle_one.walls(self._is_game_over)
+        cycle_two.walls(self._is_game_over)
+
     def _handle_segment_collision(self, cast):
         """Sets the game over flag if the snake collides with one of its segments.
         
         Args:
             cast (Cast): The cast of Actors in the game.
         """
-        # snake = cast.get_first_actor("snakes")
-        # head = snake.get_segments()[0]
-        # segments = snake.get_segments()[1:]
 
         cycle_one = cast.get_first_actor("cycle_one")
         cycle_two = cast.get_first_actor("cycle_two")
