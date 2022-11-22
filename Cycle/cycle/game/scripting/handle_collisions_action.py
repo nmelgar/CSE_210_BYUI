@@ -81,6 +81,7 @@ class HandleCollisionsAction(Action):
             message = Actor()
             message.set_text("Game Over!")
             message.set_position(position)
+            message.set_font_size(80)
             cast.add_actor("messages", message)
 
             for segment in segments_one:

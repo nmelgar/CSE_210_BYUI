@@ -43,20 +43,22 @@ class Cycle(Actor):
     def get_cycle(self):
         return self._segments[0]
 
-    def walls(self, number_of_segments):
+    def walls(self, game_over):
         # modify this method for game over to change color?
-        for i in range(number_of_segments):
-            tail = self._segments[-1]
-            velocity = tail.get_velocity()
-            offset = velocity.reverse()
-            position = tail.get_position().add(offset)
+        tail = self._segments[-1]
+        velocity = tail.get_velocity()
+        offset = velocity.reverse()
+        position = tail.get_position().add(offset)
 
-            segment = Actor()
-            segment.set_position(position)
-            segment.set_velocity(velocity)
-            segment.set_text("#")
-            segment.set_color(constants.GREEN)
-            self._segments.append(segment)
+        segment = Actor()
+        segment.set_position(position)
+        segment.set_velocity(velocity)
+        segment.set_text("#")
+        if game_over == False:
+            segment.set_color(self._color)
+        else:
+            segment.set_color(constants.WHITE)
+        self._segments.append(segment)
 
     def turn_cycle(self, velocity):
         self._segments[0].set_velocity(velocity)
