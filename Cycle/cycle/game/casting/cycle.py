@@ -11,25 +11,40 @@ class Cycle(Actor):
     The responsibility of Cycle is to move by itself.
 
     Attributes:
-        ## add atributes below
+        _segments: list of actors that will make a cycle
+        _color: will contain the values to create a color
+        _prepare_cycle: will create the cycle
+        _name: will be for user's name if using it to display points
     """
 
     def __init__(self, position):
+        """
+        Creates a new cycle
+
+        Args:
+            position: the postion and direction for each cycle
+        """
         super().__init__()
         self._segments = []
         self._color = Color(255, 255, 255)
         self._prepare_cycle(position)
-        self._name = ""
+        # self._name = ""
 
     def get_segments(self):
+        """
+        Get segments for the cycle.
+        """
         return self._segments
 
-    def get_players_name(self):
-        """Gets the players name"""
+    # def get_players_name(self):
+    #     """Gets the players name"""
 
-        return self._name
+    #     return self._name
 
     def move_next(self):
+        """
+        Moves the actors to the next position.
+        """
         # move all segments
         for segment in self._segments:
             segment.move_next()
@@ -41,10 +56,15 @@ class Cycle(Actor):
             trailing.set_velocity(velocity)
 
     def get_cycle(self):
+        """
+        Get the first actors from the segments.
+        """
         return self._segments[0]
 
     def walls(self, game_over):
-        # modify this method for game over to change color?
+        """
+        Creates walls for the cycle as they move
+        """
         tail = self._segments[-1]
         velocity = tail.get_velocity()
         offset = velocity.reverse()
@@ -61,10 +81,23 @@ class Cycle(Actor):
         self._segments.append(segment)
 
     def turn_cycle(self, velocity):
+        """
+        Changes the direction for a cycle.
+
+        Args:
+        ---
+            velocity: velocity for the cycle
+        """
         self._segments[0].set_velocity(velocity)
 
     def _prepare_cycle(self, position):
-        # MODIFY THIS TO MAKE IT WORK CORRECTLY
+        """
+        Creates a new cycle
+        Args:
+        ---
+            position: a position to locate the cycle
+        """
+
         x = position.get_x()
         y = position.get_y()
 
@@ -72,7 +105,6 @@ class Cycle(Actor):
             position = Point(x, y + i * constants.CELL_SIZE)
             velocity = Point(0, 1 * -constants.CELL_SIZE)
             text = "O" if i == 0 else "#"
-        # MODIFY until THIS TO MAKE IT WORK CORRECTLY
 
             segment = Actor()
             segment.set_position(position)
@@ -82,12 +114,19 @@ class Cycle(Actor):
             self._segments.append(segment)
 
     def set_cycle_color(self, color):
+        """
+        Sets the color for segments of a cycle
+
+        Args:
+        ---
+            color: color for the cycle
+        """
 
         self._color = color
 
         for segment in self._segments:
             segment.set_color(self._color)
 
-    def set_name(self, name):
+    # def set_name(self, name):
 
-        self._name = name
+    #     self._name = name

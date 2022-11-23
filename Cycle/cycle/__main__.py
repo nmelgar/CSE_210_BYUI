@@ -23,10 +23,10 @@ def main():
         Point(int(constants.MAX_X - 200), int(constants.MAX_Y / 2)))
     cycle_one.set_cycle_color(constants.GREEN)
     cycle_two.set_cycle_color(constants.RED)
-    cycle_one_name = "Player 1"
-    cycle_two_name = "Player 2"
-    cycle_one.set_name(cycle_one_name)
-    cycle_two.set_name(cycle_two_name)
+    # cycle_one_name = "Player 1"
+    # cycle_two_name = "Player 2"
+    # cycle_one.set_name(cycle_one_name)
+    # cycle_two.set_name(cycle_two_name)
 
     # Create the cast
     cast = Cast()

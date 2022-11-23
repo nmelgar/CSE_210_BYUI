@@ -3,10 +3,11 @@ from game.casting.actor import Actor
 from game.scripting.action import Action
 from game.shared.point import Point
 
+
 class HandleCollisionsAction(Action):
     """
     An update action that handles interactions between the actors.
-    
+
     The responsibility of HandleCollisionsAction is to handle the situation when the snake collides
     with the food, or the snake collides with its segments, or the game is over.
 
@@ -31,6 +32,13 @@ class HandleCollisionsAction(Action):
         self._handle_game_over(cast)
 
     def _handle_walls(self, cast):
+        """
+        Handles the behavior of cycles with walls
+
+        Args:
+        ---
+            cast(Cast): cast of Actors
+        """
 
         cycle_one = cast.get_first_actor("cycle_one")
         cycle_two = cast.get_first_actor("cycle_two")
@@ -38,8 +46,9 @@ class HandleCollisionsAction(Action):
         cycle_two.walls(self._is_game_over)
 
     def _handle_segment_collision(self, cast):
-        """Sets the game over flag if the snake collides with one of its segments.
-        
+        """Sets the game over flag if the cycles collides with one of its segments or 
+        to the other cycle.
+
         Args:
             cast (Cast): The cast of Actors in the game.
         """
@@ -49,28 +58,38 @@ class HandleCollisionsAction(Action):
 
         cycle_one_head = cycle_one.get_cycle()
         cycle_two_head = cycle_two.get_cycle()
-        
+
         segments_one = cycle_one.get_segments()[1:]
         segments_two = cycle_two.get_segments()[1:]
-        
+
         for segment in segments_one:
             if cycle_two_head.get_position().equals(segment.get_position()):
                 self._is_game_over = True
         
+        for segment in segments_one:
+            if cycle_one_head.get_position().equals(segment.get_position()):
+                self._is_game_over = True
+
         for segment in segments_two:
             if cycle_one_head.get_position().equals(segment.get_position()):
                 self._is_game_over = True
         
-    def _handle_game_over(self, cast):
-        """Shows the 'game over' message and turns the snake and food white if the game is over.
+        for segment in segments_two:
+            if cycle_two_head.get_position().equals(segment.get_position()):
+                self._is_game_over = True
         
+
+
+    def _handle_game_over(self, cast):
+        """Shows the 'game over' message and turns the cycles white if the game is over.
+
         Args:
             cast (Cast): The cast of Actors in the game.
         """
         if self._is_game_over:
             cycle_one = cast.get_first_actor("cycle_one")
             cycle_two = cast.get_first_actor("cycle_two")
-            
+
             segments_one = cycle_one.get_segments()
             segments_two = cycle_two.get_segments()
 

@@ -1,7 +1,6 @@
 import constants
 
 from game.casting.actor import Actor
-from game.shared.point import Point
 
 
 class Score(Actor):
@@ -19,24 +18,24 @@ class Score(Actor):
     def __init__(self):
         super().__init__()
         self._points = 0
-        self._player_name = ""
+        # self._player_name = ""
 
-    def add_points(self, points):
-        """Adds the given points to the score's total points.
+    # def add_points(self, points):
+    #     """Adds the given points to the score's total points.
 
-        Args:
-            points (int): The points to add.
-        """
-        self._points += points
-        # modify following line to show usernme and points
-        self.set_text(f"{self._player_name}: {self._points}")
+    #     Args:
+    #         points (int): The points to add.
+    #     """
+    #     self._points += points
+    #     # modify following line to show usernme and points
+    #     self.set_text(f"{self._player_name}: {self._points}")
 
-    def set_player_name(self, name):
+    # def set_player_name(self, name):
 
-        self._player_name = name
-        self.set_text(f"{self._player_name}: {self._points}")
+    #     self._player_name = name
+    #     self.set_text(f"{self._player_name}: {self._points}")
 
-    def get_player_points(self):
-        """Gets the points of the player
-        """
-        return self._points
+    # def get_player_points(self):
+    #     """Gets the points of the player
+    #     """
+    #     return self._points
