@@ -11,7 +11,7 @@
     <li>Player can...</li>
     <li></li>
       <ul>
-        <li>Player one moves using the W, S, A and D keys.</li>
+        <li>Player one moves using the right and left keys to move.</li>
       </ul>
     <li>E...</li>
     <li>P...</li>
