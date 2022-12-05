@@ -13,3 +13,6 @@ class Settings:
         self.bg_color = (230, 230, 230)
         self.background_image = pygame.image.load(
             "space_invaders/images/in_game_bg_alt_3.png")
+
+        # Ship settings
+        self.ship_speed = 1.5
