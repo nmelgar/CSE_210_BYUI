@@ -22,4 +22,11 @@ class Settings:
         self.bullet_width = 3
         self.bullet_height = 15
         self.bullet_color = (0, 128, 255)
-        self.bullets_allowed = 3
+        self.bullets_allowed = 1000000
+
+        # Alien settings
+        self.alien_speed = 1.0
+        # how fast the fleet goes down the screen
+        self.fleet_drop_speed = 10
+        # fleet_direction of 1 represents right; -1 represents left.
+        self.fleet_direction = 1
