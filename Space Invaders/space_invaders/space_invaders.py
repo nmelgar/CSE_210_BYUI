@@ -4,6 +4,8 @@ from settings import Settings
 from ship import Ship
 from bullet import Bullet
 from alien import Alien
+from time import sleep
+from game_stats import GameStats
 
 
 class SpaceInvaders:
@@ -19,19 +21,26 @@ class SpaceInvaders:
             (self.settings.screen_width, self.settings.screen_height))
 
         pygame.display.set_caption("Space Invaders")
+        # instance to store game statistics
+        self.stats = GameStats(self)
+
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
         self.aliens = pygame.sprite.Group()
         self._create_fleet()
+
+        # Start the game in an active state.
+        self.game_active = True
 
     def run_game(self):
         """Main loop for the game"""
         while True:
             self._check_events()
             self._update_screen()
-            self.ship.update()
-            self._update_bullets()
-            self._update_aliens()
+            if self.game_active:
+                self.ship.update()
+                self._update_bullets()
+                self._update_aliens()
             # The tick() method takes one argument: the frame rate for the game
             self.clock.tick(60)
             pygame.display.flip()
@@ -72,6 +81,25 @@ class SpaceInvaders:
         elif event.key == pygame.K_DOWN:
             self.ship.moving_down = False
 
+    def _ship_hit(self):
+        """responds to ship being hit by an alien"""
+        if self.stats.ships_left > 0:
+            # decrement ships_left.
+            self.stats.ships_left -= 1
+
+            # get rid of any remaining bullets and aliens
+            self.bullets.empty()
+            self.aliens.empty()
+
+            # create a new fleet and center the ship
+            self._create_fleet()
+            self.ship.center_ship()
+
+            # Pause
+            sleep(0.5)
+        else:
+            self.game_active = False
+
     def _fire_bullet(self):
         """Create a new bullet and add it to the bullets group."""
         if len(self.bullets) < self.settings.bullets_allowed:
@@ -86,10 +114,40 @@ class SpaceInvaders:
             if bullet.rect.bottom <= 0:
                 self.bullets.remove(bullet)
 
+        self._check_bullet_alien_collisions()
+
+    def _check_bullet_alien_collisions(self):
+        """Responds to bullet collision with aliens"""
+        # Remove any bullets and aliens that have collided
+        # Checks for any bullets that have hit aliens
+        # If so, get rid of the bullet and the alien
+        collisions = pygame.sprite.groupcollide(
+            self.bullets, self.aliens, True, True)
+
+        if not self.aliens:
+            # destroys existing bullets and creates new fleet
+            self.bullets.empty()
+            self._create_fleet()
+
+    def _check_aliens_bottom(self):
+        """Checks if any aliens have reached the bottom of the screen"""
+        for alien in self.aliens.sprites():
+            if alien.rect.bottom >= self.settings.screen_height:
+                # this is the same as if the ship got hit
+                self._ship_hit()
+                break
+
     def _update_aliens(self):
         """Check if the fleet is at an edge, then update positions."""
         self._check_fleet_edges()
         self.aliens.update()
+
+        # look for collision of alients with ship
+        if pygame.sprite.spritecollideany(self.ship, self.aliens):
+            self._ship_hit()
+
+        # look for aliens hitting the bottom of the screen
+        self._check_aliens_bottom()
 
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""
