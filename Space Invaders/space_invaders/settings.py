@@ -15,19 +15,30 @@ class Settings:
             "space_invaders/images/in_game_bg_alt_3.png")
 
         # Ship settings
-        self.ship_speed = 1.5
         self.ship_limit = 3
 
         # Bullet settings
-        self.bullet_speed = 2.5
         self.bullet_width = 3
         self.bullet_height = 15
         self.bullet_color = (0, 128, 255)
         self.bullets_allowed = 1000000
 
         # Alien settings
-        self.alien_speed = 1.0
-        # how fast the fleet goes down the screen
         self.fleet_drop_speed = 10
+        # How quickly the game speeds up
+        self.speedup_scale = 1.1
+        self.initialize_dynamic_settings()
+
+    def initialize_dynamic_settings(self):
+        """Initializes settings that change throughout the game."""
+        self.ship_speed = 1.5
+        self.bullet_speed = 2.5
+        self.alien_speed = 1.0
         # fleet_direction of 1 represents right; -1 represents left.
         self.fleet_direction = 1
+
+    def increase_speed(self):
+        """Increases speed settings"""
+        self.ship_speed *= self.speedup_scale
+        self.bullet_speed *= self.speedup_scale
+        self.alien_speed *= self.speedup_scale

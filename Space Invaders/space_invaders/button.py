@@ -11,8 +11,8 @@ class Button:
 
         # Set the dimensions and properties of the button.
         self.width, self.height = 200, 50
-        self.button_color = (0, 135, 0)
-        self.text_color = (255, 255, 255)
+        self.button_color = (0, 0, 0)
+        self.text_color = (255, 223, 43)
         self.font = pygame.font.SysFont(None, 48)
 
         # builds the button's rect object and center it
