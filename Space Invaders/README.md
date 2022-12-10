@@ -27,6 +27,20 @@
       </ul>
 </ul>
 
+<h3>How to start and suggestions</h3>
+<hr>
+<p>How to start?</p>
+<ul>
+  <li>Run the __main__.py file and the game program will being</li>
+</ul>
+
+<p>Suggestions</p>
+<ul>
+  <li>Don't move you ship very close to the fleet or you will be destroyed.</li>
+  <li>If the fleet shows up where you are located you ship will be destroyed.</li>
+  <li>The fleet moves down once it touches left/right edges of the screen.</li>
+</ul>
+
 ## Project Structure
 ---
 The project files and folders are organized as follows:
