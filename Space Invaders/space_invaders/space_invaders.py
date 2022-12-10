@@ -6,6 +6,7 @@ from bullet import Bullet
 from alien import Alien
 from time import sleep
 from game_stats import GameStats
+from scoreboard import Scoreboard
 from button import Button
 
 
@@ -22,8 +23,9 @@ class SpaceInvaders:
             (self.settings.screen_width, self.settings.screen_height))
 
         pygame.display.set_caption("Space Invaders")
-        # instance to store game statistics
+        # instance to store game statistics and create scoreboard
         self.stats = GameStats(self)
+        self.sb = Scoreboard(self)
 
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
@@ -70,6 +72,8 @@ class SpaceInvaders:
             self.settings.initialize_dynamic_settings()
             # Resets the game statistics
             self.stats.reset_stats()
+            self.sb.prep_score()
+            self.sb.prep_level()
             self.game_active = True
 
             # Get rid of any remaining bullets and alienss
@@ -153,11 +157,20 @@ class SpaceInvaders:
         collisions = pygame.sprite.groupcollide(
             self.bullets, self.aliens, True, True)
 
+        if collisions:
+            for aliens in collisions.values():
+                self.stats.score += self.settings.alien_points * len(aliens)
+            self.sb.prep_score()
+
         if not self.aliens:
             # destroys existing bullets and creates new fleet
             self.bullets.empty()
             self._create_fleet()
             self.settings.increase_speed()
+
+            # increases level
+            self.stats.level += 1
+            self.sb.prep_level()
 
     def _check_aliens_bottom(self):
         """Checks if any aliens have reached the bottom of the screen"""
@@ -188,6 +201,9 @@ class SpaceInvaders:
             bullet.draw_bullet()
         self.ship.blitme()
         self.aliens.draw(self.screen)
+
+        # sraws the score information
+        self.sb.show_score()
 
         # Draws the play button if the game is inactive
         if not self.game_active:
