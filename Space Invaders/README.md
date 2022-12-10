@@ -2,22 +2,28 @@
 
 <h3>Overview</h3>
 <hr>
-<p> Overview of the game here...  </p>
+<p> Ships from the space are coming to the eart, will you be able to protect us?  </p>
 
 <h3>Rules</h3>
 <hr>
-<p>C</p>
+<p>Press the "Play" button using the mouse and the game will start.</p>
 <ul>
-    <li>Player can...</li>
-    <li></li>
+    <li>Player can move all around the screen using the keyboard</li>
+    <ul>
+        <li>UP key to go up</li>
+        <li>RIGHT key to go right</li>
+        <li>DOWN key to go down</li>
+        <li>LEFT key to go left</li>
+    </ul>
+    <li>Player will shoot the bullets using the space bar.</li>
+    <li>Player can quit the game using the "Q" key.</li>
+    <li>Every time the player defeats a fleet of aliens a new one will arrive.</li>
+    <li>Every time the player defeats a fleet he/she will move to next level</li>
+    <li>Each destroyed ship will add up points to player's score.</li>
+    <li>The game will end when: </li>
       <ul>
-        <li>Player one moves using the right and left keys to move.</li>
-      </ul>
-    <li>E...</li>
-    <li>P...</li>
-    <li></li>
-      <ul>
-        <li>....</li>
+        <li>Ṕlayer's ship collide with an aliens</li>
+        <li>Alines collide with the bottom of the screen</li>
       </ul>
 </ul>
 
@@ -33,7 +39,7 @@ root                             (project root folder)
 ```
 
 ## Software Design
-Software design here <a href="#" target="#">here</a>
+Software design idea at this level folder.
 
 ## Required Technologies
 ---

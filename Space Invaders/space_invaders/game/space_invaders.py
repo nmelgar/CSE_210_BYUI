@@ -1,13 +1,13 @@
 import sys
 import pygame
-from settings import Settings
-from ship import Ship
-from bullet import Bullet
-from alien import Alien
+from game.settings import Settings
+from game.ship import Ship
+from game.bullet import Bullet
+from game.alien import Alien
 from time import sleep
-from game_stats import GameStats
-from scoreboard import Scoreboard
-from button import Button
+from game.game_stats import GameStats
+from game.scoreboard import Scoreboard
+from game.button import Button
 
 
 class SpaceInvaders:
@@ -250,7 +250,7 @@ class SpaceInvaders:
         self.settings.fleet_direction *= -1
 
 
-if __name__ == '__main__':
-    # make a game instance and run the game
-    si_game = SpaceInvaders()
-    si_game.run_game()
+# if __name__ == '__main__':
+#     # make a game instance and run the game
+#     si_game = SpaceInvaders()
+#     si_game.run_game()

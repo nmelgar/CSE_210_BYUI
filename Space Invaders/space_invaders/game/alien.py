@@ -13,7 +13,7 @@ class Alien(Sprite):
         self.settings = si_game.settings
 
         # load the alien image and sets its attributes
-        self.image = pygame.image.load('space_invaders/images/enemy_ship.png')
+        self.image = pygame.image.load('space_invaders/game/images/enemy_ship.png')
         self.rect = self.image.get_rect()
 
         # start each new alien near t the top left of the screen

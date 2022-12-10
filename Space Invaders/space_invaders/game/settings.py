@@ -12,7 +12,7 @@ class Settings:
         self.screen_height = 800
         self.bg_color = (230, 230, 230)
         self.background_image = pygame.image.load(
-            "space_invaders/images/in_game_bg_alt_3.png")
+            "space_invaders/game/images/in_game_bg_alt_3.png")
 
         # Ship settings
         self.ship_limit = 3

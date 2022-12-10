@@ -11,7 +11,7 @@ class Ship:
         self.settings = si_game.settings
 
         # load the ship image and get its rect
-        self.image = pygame.image.load('space_invaders/images/player_ship.png')
+        self.image = pygame.image.load('space_invaders/game/images/player_ship.png')
         self.rect = self.image.get_rect()
 
         # new ship at the bottom center of the screen
