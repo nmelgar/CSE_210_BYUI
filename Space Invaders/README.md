@@ -27,11 +27,11 @@
       </ul>
 </ul>
 
-<h3>How to start and suggestions</h3>
+<h3>How To Start and Suggestions</h3>
 <hr>
 <p>How to start?</p>
 <ul>
-  <li>Run the __main__.py file and the game program will being</li>
+  <li>Run the __main__.py file and the game program will begin</li>
 </ul>
 
 <p>Suggestions</p>
